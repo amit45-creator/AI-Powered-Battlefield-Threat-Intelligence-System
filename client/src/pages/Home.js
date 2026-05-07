@@ -64,7 +64,7 @@ function Home() {
               <button 
                 className="btn btn-primary" 
                 id="get-started-btn"
-                onClick={() => isAuthenticated ? navigate('/dashboard') : navigate('/login')}
+                onClick={() => isAuthenticated ? navigate('/report') : navigate('/login')}
               >
                 ⚡ Access Command Center
               </button>
