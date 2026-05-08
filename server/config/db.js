@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+// Day 4: MongoDB Database Connection Integration
+
 const connectDB = async () => {
   try {
     const conn = await mongoose.connect(
