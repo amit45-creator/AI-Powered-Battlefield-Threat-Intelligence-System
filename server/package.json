@@ -8,18 +8,25 @@
     "dev": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["battlefield", "threat-intelligence", "defense", "MERN", "AI"],
+  "keywords": [
+    "battlefield",
+    "threat-intelligence",
+    "defense",
+    "MERN",
+    "AI"
+  ],
   "author": "amit45-creator",
   "license": "MIT",
   "dependencies": {
+    "@google/genai": "^2.0.1",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.21.0",
+    "express-validator": "^7.2.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.7.0",
-    "morgan": "^1.10.0",
-    "express-validator": "^7.2.0"
+    "morgan": "^1.10.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.7"

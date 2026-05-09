@@ -1,4 +1,5 @@
 const Threat = require('../models/Threat');
+const aiService = require('../services/aiService');
 
 // @desc    Get all threats
 // @route   GET /api/threats
@@ -70,8 +71,24 @@ const createThreat = async (req, res) => {
       location,
       tags: tags || [],
       reportedBy: req.user._id,
-      status: 'Pending'
+      status: 'Analyzing'
     });
+
+    // Process threat through AI asynchronously to not block the initial response
+    // Or we can await it if we want immediate result. Since it's critical intel, we await.
+    const aiAnalysis = await aiService.analyzeThreat(threat);
+    
+    // Update threat with AI findings
+    threat.threatScore = aiAnalysis.threatScore;
+    threat.priority = aiAnalysis.priority;
+    threat.aiAnalysis = {
+      summary: aiAnalysis.summary,
+      recommendations: aiAnalysis.recommendations,
+      confidence: aiAnalysis.confidence,
+      analyzedAt: aiAnalysis.analyzedAt
+    };
+    threat.status = 'Analyzed';
+    await threat.save();
 
     const populatedThreat = await Threat.findById(threat._id)
       .populate('reportedBy', 'name rank role');
