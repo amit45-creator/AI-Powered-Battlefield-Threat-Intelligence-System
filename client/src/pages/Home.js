@@ -68,8 +68,8 @@ function Home() {
               >
                 ⚡ Access Command Center
               </button>
-              <button className="btn btn-outline" id="view-demo-btn">
-                📊 View Dashboard Demo
+              <button className="btn btn-outline" id="view-demo-btn" onClick={() => navigate('/feed')}>
+                📊 View Live Feed
               </button>
             </div>
           </section>
