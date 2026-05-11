@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import ThreatReport from './pages/ThreatReport';
 import ThreatFeed from './pages/ThreatFeed';
+import Dashboard from './pages/Dashboard';
 import { useAuth } from './context/AuthContext';
 import './App.css';
 
@@ -35,6 +36,14 @@ function App() {
         element={
           <ProtectedRoute>
             <ThreatFeed />
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/dashboard" 
+        element={
+          <ProtectedRoute>
+            <Dashboard />
           </ProtectedRoute>
         } 
       />
