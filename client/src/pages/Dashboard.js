@@ -76,6 +76,7 @@ function Dashboard() {
   const [trends, setTrends] = useState([]);
   const [sectorData, setSectorData] = useState([]);
   const [threatTypes, setThreatTypes] = useState([]);
+  const [aiSummary, setAiSummary] = useState(null);
 
   useEffect(() => {
     fetchDashboardData();
@@ -84,17 +85,19 @@ function Dashboard() {
   const fetchDashboardData = async () => {
     try {
       setLoading(true);
-      const [statsRes, trendsRes, sectorRes, typesRes] = await Promise.all([
+      const [statsRes, trendsRes, sectorRes, typesRes, summaryRes] = await Promise.all([
         apiService.dashboard.getStats(),
         apiService.dashboard.getTrends(),
         apiService.dashboard.getSectorData(),
-        apiService.dashboard.getThreatTypes()
+        apiService.dashboard.getThreatTypes(),
+        apiService.dashboard.getSummary()
       ]);
 
       setStats(statsRes.data);
       setTrends(trendsRes.data);
       setSectorData(sectorRes.data);
       setThreatTypes(typesRes.data);
+      setAiSummary(summaryRes.data);
       setError(null);
     } catch (err) {
       setError('Failed to securely fetch dashboard metrics. Verify command link.');
@@ -185,6 +188,22 @@ function Dashboard() {
           <button className="btn btn-primary" onClick={() => navigate('/report')}>+ Report Threat</button>
         </div>
       </div>
+
+      {/* AI Intelligence Summary Section */}
+      {aiSummary && (
+        <div className="ai-summary-module glass-card" style={{ marginBottom: '2rem', padding: '1.5rem', borderLeft: '4px solid #1abc7c' }}>
+          <h3 style={{ fontFamily: 'var(--font-military)', color: '#1abc7c', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <span className="pulse-dot" style={{ width: '10px', height: '10px', backgroundColor: '#1abc7c', borderRadius: '50%', display: 'inline-block', boxShadow: '0 0 8px #1abc7c' }}></span>
+            AI Intelligence Summary (Last 24 Hrs)
+          </h3>
+          <p style={{ color: 'var(--text-primary)', fontSize: '1.1rem', lineHeight: '1.6', fontStyle: 'italic' }}>
+            "{aiSummary.text}"
+          </p>
+          <div style={{ marginTop: '1rem', fontSize: '0.8rem', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>
+            Generated at: {new Date(aiSummary.generatedAt).toLocaleString()}
+          </div>
+        </div>
+      )}
 
       {/* KPI Stats Row */}
       <div className="kpi-grid">

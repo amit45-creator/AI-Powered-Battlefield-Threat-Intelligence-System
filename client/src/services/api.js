@@ -67,6 +67,7 @@ const apiService = {
     getSectorData: () => apiService.request('/dashboard/sector-wise'),
     getThreatTypes: () => apiService.request('/dashboard/threat-types'),
     getTrends: () => apiService.request('/dashboard/trends'),
+    getSummary: () => apiService.request('/dashboard/summary'),
   },
 
   // Health check

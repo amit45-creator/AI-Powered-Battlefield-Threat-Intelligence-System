@@ -101,4 +101,53 @@ const analyzeThreat = async (threat) => {
   }
 };
 
-module.exports = { analyzeThreat };
+const generateDailySummary = async (recentThreats) => {
+  const apiKey = process.env.GEMINI_API_KEY || process.env.AI_API_KEY;
+  
+  if (!apiKey || recentThreats.length === 0) {
+    return {
+      text: "COMMAND UPDATE: Routine monitoring active. No major anomalies detected in the sector over the last 24 hours. Maintain standard defense posture.",
+      generatedAt: new Date()
+    };
+  }
+
+  try {
+    const ai = new GoogleGenAI({ apiKey });
+    
+    // Create a compact list of threats for the prompt to save tokens
+    const threatList = recentThreats.map(t => 
+      `- [${t.priority}] ${t.threatType} in ${t.location?.sector}: ${t.title}`
+    ).join('\n');
+
+    const prompt = `
+    You are the Chief Intelligence AI of the Battlefield Threat Intelligence System.
+    Review the following threats from the last 24 hours and generate a concise, military-style Situation Report (SITREP) summary. 
+    It should read like a high-level briefing to a Commander. Keep it under 3-4 sentences.
+    Focus on trends, critical hotspots, and overall sector stability. Do not list individual threats.
+
+    Recent Threats:
+    ${threatList}
+
+    Generate only the SITREP text without any markdown or conversational filler:
+    `;
+
+    const response = await ai.models.generateContent({
+      model: 'gemini-2.5-flash',
+      contents: prompt,
+    });
+
+    return {
+      text: response.text.trim(),
+      generatedAt: new Date()
+    };
+
+  } catch (error) {
+    console.error('❌ AI Daily Summary Failed:', error.message);
+    return {
+      text: "SITREP: Automated intelligence summarization currently offline. Localized threats detected across multiple sectors. Review visual telemetry for tactical awareness.",
+      generatedAt: new Date()
+    };
+  }
+};
+
+module.exports = { analyzeThreat, generateDailySummary };

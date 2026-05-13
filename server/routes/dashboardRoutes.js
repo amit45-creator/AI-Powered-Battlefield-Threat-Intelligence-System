@@ -1,5 +1,5 @@
 const express = require('express');
-const { getDashboardStats, getSectorWiseData, getThreatTypeDistribution, getThreatTrends } = require('../controllers/dashboardController');
+const { getDashboardStats, getSectorWiseData, getThreatTypeDistribution, getThreatTrends, getAISummary } = require('../controllers/dashboardController');
 const { protect } = require('../middleware/auth');
 
 const router = express.Router();
@@ -18,5 +18,6 @@ router.get('/threat-types', getThreatTypeDistribution);
 
 // @route   GET /api/dashboard/trends
 router.get('/trends', getThreatTrends);
+router.get('/summary', getAISummary);
 
 module.exports = router;

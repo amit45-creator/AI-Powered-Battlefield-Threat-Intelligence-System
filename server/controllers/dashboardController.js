@@ -1,4 +1,5 @@
 const Threat = require('../models/Threat');
+const aiService = require('../services/aiService');
 
 // @desc    Get dashboard statistics
 // @route   GET /api/dashboard/stats
@@ -128,4 +129,27 @@ const getThreatTrends = async (req, res) => {
   }
 };
 
-module.exports = { getDashboardStats, getSectorWiseData, getThreatTypeDistribution, getThreatTrends };
+// @desc    Get AI Intelligence Summary
+// @route   GET /api/dashboard/summary
+// @access  Private
+const getAISummary = async (req, res) => {
+  try {
+    const last24h = new Date(Date.now() - 24 * 60 * 60 * 1000);
+    const recentThreats = await Threat.find({ createdAt: { $gte: last24h } })
+      .select('title threatType priority location.sector createdAt')
+      .sort({ createdAt: -1 })
+      .limit(20); // Cap to 20 to avoid token limits
+
+    const summaryData = await aiService.generateDailySummary(recentThreats);
+
+    res.status(200).json({
+      success: true,
+      data: summaryData
+    });
+  } catch (error) {
+    console.error('AI Summary error:', error);
+    res.status(500).json({ success: false, error: 'Server error generating AI summary.' });
+  }
+};
+
+module.exports = { getDashboardStats, getSectorWiseData, getThreatTypeDistribution, getThreatTrends, getAISummary };
