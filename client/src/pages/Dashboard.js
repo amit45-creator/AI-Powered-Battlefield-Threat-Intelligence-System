@@ -180,6 +180,7 @@ function Dashboard() {
           <p>Real-time sector intelligence and threat analytics</p>
         </div>
         <div className="dashboard-actions">
+          <button className="btn btn-outline" onClick={() => navigate('/map')}>🗺️ Border Map</button>
           <button className="btn btn-outline" onClick={() => fetchDashboardData()}>🔄 Refresh Sync</button>
           <button className="btn btn-primary" onClick={() => navigate('/report')}>+ Report Threat</button>
         </div>

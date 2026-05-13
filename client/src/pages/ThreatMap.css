@@ -1,0 +1,136 @@
+.map-page-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+  height: calc(100vh - 150px);
+  display: flex;
+  flex-direction: column;
+}
+
+.map-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 1.5rem;
+  flex-shrink: 0;
+}
+
+.map-title h2 {
+  font-family: var(--font-military);
+  color: var(--primary-color);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.map-title p {
+  color: var(--text-secondary);
+}
+
+.map-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.map-wrapper {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.loading-map {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-military);
+  color: var(--primary-color);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  animation: pulse 1.5s infinite;
+}
+
+/* Custom Tactical Popup Styling */
+.leaflet-popup-content-wrapper {
+  background: rgba(10, 15, 12, 0.95) !important;
+  border: 1px solid rgba(26, 188, 124, 0.3);
+  border-radius: var(--radius-md) !important;
+  backdrop-filter: blur(10px);
+}
+
+.leaflet-popup-tip {
+  background: rgba(10, 15, 12, 0.95) !important;
+  border-top: 1px solid rgba(26, 188, 124, 0.3);
+  border-left: 1px solid rgba(26, 188, 124, 0.3);
+}
+
+.popup-content {
+  color: var(--text-primary);
+  font-family: var(--font-main);
+  padding: 0.5rem;
+  min-width: 180px;
+}
+
+.popup-content h3 {
+  color: var(--text-primary);
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+}
+
+.popup-badge {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-family: var(--font-military);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.popup-sector {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  margin: 0.5rem 0;
+}
+
+.popup-score {
+  font-size: 0.9rem;
+  margin: 0.5rem 0;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.score-critical { color: #ff6b6b; font-weight: bold; }
+.score-medium { color: #ffa94d; font-weight: bold; }
+.score-low { color: var(--primary-color); font-weight: bold; }
+
+.map-legend {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: var(--radius-md);
+  flex-shrink: 0;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.5);
+}
+
+.legend-dot.critical { background: #ff6b6b; box-shadow: 0 0 8px #ff6b6b; }
+.legend-dot.medium { background: #ffa94d; box-shadow: 0 0 8px #ffa94d; }
+.legend-dot.low { background: #1abc7c; box-shadow: 0 0 8px #1abc7c; }
+.legend-dot.pending { background: #8da698; }

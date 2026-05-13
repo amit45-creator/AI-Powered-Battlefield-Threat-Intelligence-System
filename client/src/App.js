@@ -5,6 +5,7 @@ import Login from './pages/Login';
 import ThreatReport from './pages/ThreatReport';
 import ThreatFeed from './pages/ThreatFeed';
 import Dashboard from './pages/Dashboard';
+import ThreatMap from './pages/ThreatMap';
 import { useAuth } from './context/AuthContext';
 import './App.css';
 
@@ -44,6 +45,14 @@ function App() {
         element={
           <ProtectedRoute>
             <Dashboard />
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/map" 
+        element={
+          <ProtectedRoute>
+            <ThreatMap />
           </ProtectedRoute>
         } 
       />
