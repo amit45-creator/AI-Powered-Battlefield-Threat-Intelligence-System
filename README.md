@@ -1,180 +1,156 @@
 # 🛡️ AI-Powered Battlefield Threat Intelligence System
 
-> Inspired by real-world defense intelligence systems.
+![Project Banner](https://img.shields.io/badge/Defense-Intelligence%20System-1abc7c?style=for-the-badge&logo=shield)
+![MERN Stack](https://img.shields.io/badge/Stack-MERN-blue?style=for-the-badge&logo=mongodb)
+![AI Integration](https://img.shields.io/badge/AI-Google_Gemini-orange?style=for-the-badge&logo=google)
 
-An advanced **MERN stack** application that leverages **Artificial Intelligence** to analyze and classify battlefield threats in real-time. Built for defense command centers to quickly assess incoming threat reports from multiple sources — drone sightings, suspicious vehicle movements, border intrusions, cyber attacks, and communication disturbances.
+> An advanced, military-grade situational awareness platform powered by Artificial Intelligence. 
 
-## 🎯 Problem Statement
-
-Defense command centers receive data from multiple sources simultaneously:
-- 🛸 Drone sightings
-- 🚗 Suspicious vehicle movements
-- 🚧 Border intrusion reports
-- 💻 Cyber attack alerts
-- 📡 Communication disturbances
-
-Human operators need to quickly determine: **Is the threat level low, medium, or critical?**
-
-This system automates threat analysis using AI to process incoming incidents, assign threat scores (1-100), classify priority levels, and provide actionable intelligence summaries.
-
-## 🚀 Core Features
-
-### 1. Secure Officer Login
-- JWT-based authentication
-- Role-based access control (Analyst / Commander)
-- Secure session management
-
-### 2. Threat Report Module
-- Officers can submit incident reports
-- Fields: Location, Sector, Threat Type (Drone/Vehicle/Intrusion/Cyber), Description
-- Stored in MongoDB with timestamps
-
-### 3. AI Threat Analysis (Hero Feature)
-- AI analyzes threat descriptions
-- Generates threat scores (1-100)
-- Classifies priority: Low / Medium / Critical
-- Provides tactical intelligence summaries
-
-### 4. Live Command Dashboard
-- Real-time threat overview charts
-- Sector-wise threat distribution
-- Threat trend analysis
-- Critical alert notifications
-
-### 5. Map-based Border Visualization
-- Interactive map showing incident locations
-- Sector-wise threat markers
-- Heat map of threat density
-
-### 6. AI Intelligence Summary
-- Automated 24-hour intelligence briefings
-- Pattern recognition across incidents
-- Military-style intelligence reports
-
-## 🏗️ Tech Stack
-
-| Layer | Technology |
-|-------|-----------|
-| Frontend | React.js, Chart.js, Leaflet Maps |
-| Backend | Node.js, Express.js |
-| Database | MongoDB with Mongoose |
-| AI Engine | OpenAI API / Custom NLP |
-| Auth | JWT + bcrypt |
-| Styling | CSS3 with Military Theme |
-
-## 📁 Project Structure
-
-```
-ai-powered-battlefield-threat-intelligence-system/
-├── client/                    # React Frontend
-│   ├── public/
-│   ├── src/
-│   │   ├── components/        # Reusable UI components
-│   │   ├── pages/             # Page components
-│   │   ├── context/           # React Context (Auth, Theme)
-│   │   ├── services/          # API service layer
-│   │   ├── utils/             # Utility functions
-│   │   ├── assets/            # Static assets
-│   │   ├── App.js
-│   │   ├── App.css
-│   │   └── index.js
-│   └── package.json
-├── server/                    # Node.js Backend
-│   ├── config/                # Database & app config
-│   ├── controllers/           # Route controllers
-│   ├── middleware/             # Auth & error middleware
-│   ├── models/                # Mongoose models
-│   ├── routes/                # API routes
-│   ├── utils/                 # Helper utilities
-│   └── server.js              # Entry point
-├── .gitignore
-├── .env.example
-├── README.md
-└── package.json
-```
-
-## 🗓️ Development Roadmap (10 Days)
-
-| Day | Task | Status |
-|-----|------|--------|
-| 1 | Project Setup - React + Node + MongoDB + Folder Structure | ✅ |
-| 2 | Auth System - JWT + Role-based access | ⬜ |
-| 3 | Threat Report APIs | ⬜ |
-| 4 | MongoDB Integration - Database Models | ⬜ |
-| 5 | AI Integration - Threat Analyzer | ⬜ |
-| 6 | Threat Scoring & Classification | ⬜ |
-| 7 | Dashboard Charts | ⬜ |
-| 8 | Map Integration | ⬜ |
-| 9 | UI Polish + Filtering | ⬜ |
-| 10 | Deploy | ⬜ |
-
-## ⚙️ Getting Started
-
-### Prerequisites
-- Node.js (v18+)
-- MongoDB (local or Atlas)
-- npm or yarn
-
-### Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/amit45-creator/ai-powered-battlefield-threat-intelligence-system.git
-cd ai-powered-battlefield-threat-intelligence-system
-
-# Install server dependencies
-cd server
-npm install
-
-# Install client dependencies
-cd ../client
-npm install
-
-# Set up environment variables
-cp .env.example .env
-# Edit .env with your configuration
-
-# Run the application
-# Terminal 1 - Start server
-cd server
-npm run dev
-
-# Terminal 2 - Start client
-cd client
-npm start
-```
-
-## 🔐 Environment Variables
-
-```env
-PORT=5000
-MONGODB_URI=mongodb://localhost:27017/battlefield-intel
-JWT_SECRET=your_jwt_secret_key
-AI_API_KEY=your_openai_api_key
-NODE_ENV=development
-```
-
-## 📡 API Endpoints
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/api/auth/register` | Register new officer |
-| POST | `/api/auth/login` | Officer login |
-| GET | `/api/threats` | Get all threats |
-| POST | `/api/threats` | Report new threat |
-| GET | `/api/threats/:id` | Get threat details |
-| POST | `/api/threats/:id/analyze` | AI analyze threat |
-| GET | `/api/dashboard/stats` | Dashboard statistics |
-| GET | `/api/dashboard/sector-wise` | Sector-wise data |
-
-## 🤝 Contributing
-
-This project is part of a defense technology internship. Contributions and suggestions are welcome.
-
-## 📜 License
-
-This project is licensed under the MIT License.
+Built for defense command centers, this **MERN stack** application analyzes and classifies battlefield threats in real-time. It processes incoming intelligence reports from multiple sources — drone sightings, suspicious vehicle movements, border intrusions, and cyber attacks — and uses AI to generate tactical recommendations, threat scores, and daily situational reports (SITREPs).
 
 ---
 
-**Built with ❤️ for Defense Intelligence**
+## 🎯 Problem Statement
+
+Modern defense command centers suffer from data overload. When multiple intelligence reports arrive simultaneously, human operators must quickly assess: **Is this a critical threat or routine anomaly?**
+
+This system solves this by acting as an **AI-augmented Intelligence Officer**. It automates threat triage, assigns severity scores (1-100), plots threats on a tactical map, and generates automated briefings, ensuring Commanders can focus on high-priority decision-making rather than data sorting.
+
+---
+
+## 🚀 Core Capabilities
+
+### 1. 🔐 Secure Command Authentication
+- **Defense-Grade Security:** JWT-based stateless authentication.
+- **Role-Based Access Control:** Differentiates between Field Analysts (Reporting) and Commanders (Dashboard Access & Deletion).
+- **Military UI:** Glassmorphism, neon-green accents, and "Restricted Access" aesthetics.
+
+### 2. 📝 Tactical Threat Reporting
+- **Incident Logging:** Officers submit structured reports detailing Sector, Coordinates, and Threat Type.
+- **Categorization:** Automatically categorizes reports into Drone, Vehicle, Intrusion, Cyber, or Comm-Interference.
+
+### 3. 🧠 AI Threat Analysis Engine (Hero Feature)
+- **Real-Time Analysis:** Powered by Google's Gemini AI SDK.
+- **Threat Scoring:** Calculates a Threat Score (1-100) based on severity heuristics and NLP.
+- **Classification:** Automatically labels threats as `Critical`, `Medium`, or `Low`.
+- **Tactical Recommendations:** The AI suggests immediate counter-measures for the specific threat.
+- **Failsafe Mock Mode:** A deterministic keyword-based AI fallback ensures the system works perfectly offline or without API keys.
+
+### 4. 📊 Live Command Dashboard
+- **Central Intelligence Hub:** Real-time KPIs (Total Threats, Critical Alerts).
+- **Visual Analytics:** Integrated with `Chart.js` for 7-Day trend analysis, sector-wise distribution, and threat classification breakdowns.
+
+### 5. 🗺️ Map-Based Border Visualization
+- **Tactical Map:** Powered by `Leaflet` and `react-leaflet` using CartoDB Dark Matter tiles.
+- **Geospatial Plotting:** Threats are plotted in real-time based on coordinates.
+- **Priority Radar:** Critical threats feature a pulsating red 15km radar ping to draw immediate commander attention.
+
+### 6. 📋 Automated SITREP Generation
+- **24-Hour AI Intelligence Summary:** Aggregates all threats from the last 24 hours into a cohesive, military-style Situation Report.
+
+---
+
+## 🏗️ Technical Architecture
+
+| Layer | Technology |
+|-------|-----------|
+| **Frontend** | React.js, React Router, Chart.js, Leaflet Maps, Vanilla CSS |
+| **Backend** | Node.js, Express.js |
+| **Database** | MongoDB with Mongoose |
+| **AI Engine** | `@google/genai` (Gemini 2.5 Flash) |
+| **Auth & Security** | JSON Web Tokens (JWT), bcryptjs |
+
+---
+
+## 📁 Repository Structure
+
+```
+battlefield-threat-intelligence/
+├── client/                    # React Frontend App
+│   ├── src/
+│   │   ├── components/        # Reusable UI (Protected Routes)
+│   │   ├── context/           # Global Auth Context
+│   │   ├── pages/             # Dashboard, ThreatMap, Feed, Login, Report
+│   │   ├── services/          # API Handlers (Axios)
+│   │   └── index.css          # Military CSS Variables & Themes
+├── server/                    # Node.js Express Backend
+│   ├── config/                # MongoDB Database Connection
+│   ├── controllers/           # Auth, Threat, and Dashboard Logic
+│   ├── middleware/            # JWT Verification
+│   ├── models/                # Mongoose Schemas (User, Threat)
+│   ├── routes/                # API Endpoints
+│   ├── services/              # AI Service Integration
+│   └── server.js              # Entry point
+└── package.json               # Root scripts (Concurrently)
+```
+
+---
+
+## 🗓️ 10-Day Sprint Completion
+
+| Day | Task | Status |
+|-----|------|--------|
+| **1** | Project Setup - MERN Stack Initialization | ✅ |
+| **2** | Auth System - JWT + Officer Credentials | ✅ |
+| **3** | Threat Report APIs - Express Controllers | ✅ |
+| **4** | MongoDB Integration - Database Models | ✅ |
+| **5** | AI Integration - Threat Analyzer Service | ✅ |
+| **6** | Threat Scoring & Live Intelligence Feed UI | ✅ |
+| **7** | Live Command Dashboard with Chart.js | ✅ |
+| **8** | Map-Based Border Visualization (Leaflet) | ✅ |
+| **9** | AI Intelligence Daily SITREP Module | ✅ |
+| **10** | Final Polish, Seeding, & Presentation | ✅ |
+
+---
+
+## ⚙️ Quick Start Guide
+
+Experience the project instantly with the included demo seeder.
+
+### Prerequisites
+- Node.js (v18+)
+- MongoDB (Running locally on `mongodb://localhost:27017` or update `.env`)
+
+### 1. Installation
+```bash
+# Clone the repository
+git clone https://github.com/amit45-creator/AI-Powered-Battlefield-Threat-Intelligence-System.git
+cd AI-Powered-Battlefield-Threat-Intelligence-System
+
+# Install root dependencies
+npm install
+
+# Install client & server dependencies
+npm run install-all
+```
+
+### 2. Environment Setup
+In the `server` directory, create a `.env` file (or copy `.env.example`):
+```env
+PORT=5000
+MONGODB_URI=mongodb://localhost:27017/battlefield-intel
+JWT_SECRET=super_secret_defense_key_123
+GEMINI_API_KEY=your_gemini_key_here # Optional (System will use Failsafe Mock Mode if empty)
+```
+
+### 3. Seed the Database & Run
+```bash
+# Generate a test Commander account and mock threats
+npm run seed
+
+# Start both backend and frontend simultaneously
+npm start
+```
+
+### 4. Access the System
+- Open `http://localhost:3000`
+- **Login Credentials:**
+  - Email: `commander@defense.mil`
+  - Password: `command123`
+
+---
+
+## 📜 License
+This project was developed as a defense technology prototype. It is open-sourced under the MIT License.
+
+*Built with precision for the modern battlefield.* 🛡️

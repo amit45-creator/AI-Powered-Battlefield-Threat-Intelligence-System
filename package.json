@@ -1,0 +1,13 @@
+{
+  "name": "ai-powered-battlefield-threat-intelligence-system",
+  "version": "1.0.0",
+  "description": "Defense Command Center AI Intelligence Dashboard",
+  "scripts": {
+    "install-all": "npm install --prefix server && npm install --prefix client",
+    "start": "concurrently \"npm start --prefix server\" \"npm start --prefix client\"",
+    "seed": "node server/seed.js"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
